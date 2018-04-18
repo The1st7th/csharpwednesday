@@ -1,0 +1,22 @@
+<h1>My Tamagotchies</h1>
+<ul>
+  @foreach(var tamagotchi in Model)
+  {
+
+    <li>@tamagotchi.GetName()</li>
+    if (@tamagotchi.GetHungry() > 0 && @tamagotchi.GetSleep() > 0 && @tamagotchi.GetHappy() > 0)
+    {
+    <li>@tamagotchi.GetHungry() <a href='/feed/@tamagotchi.GetId()'>feed me</a></li>
+    <li>@tamagotchi.GetSleep() <a href='/sleep/@tamagotchi.GetId()'>put me to sleep</a></li>
+    <li>@tamagotchi.GetHappy() <a href='/happy/@tamagotchi.GetId()'>make me happy</a></li>
+    } else{
+    <li>he is dead</li>
+    }
+  }
+</ul>
+
+<p><a href="/tamagotchies/new">Add a new tamagotchi.</a></p>
+
+<form action="/tamagotchies/decrease" method="post">
+  <button type="submit" name="button">Timepass</button>
+</form>
